@@ -1,14 +1,16 @@
 "use client";
 
-import Toggle from "@/components/Toggle";
 import {
   slideInFromRight,
   slideInFromTop,
   slideInFromLeft,
 } from "@/utils/motion";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
+
   return (
     <>
       <main className="flex flex-col items-center justify-center min-h-screen bg-gray-50 overflow-hidden">
@@ -38,12 +40,13 @@ export default function Home() {
             variants={slideInFromLeft(0.5, 0.5)}
             className="px-6 py-3 bg-black text-white border-2 border-black font-semibold rounded-full hover:bg-white hover:text-black transition-all ease-in-out duration-300"
           >
-            Get Started
+            Watch Demo
           </motion.button>
           <motion.button
             initial="hidden"
             animate="visible"
             variants={slideInFromRight(0.5, 0.5)}
+            onClick={() => router.push("/login")}
             className="px-6 py-3 bg-white text-black border-2 border-black font-semibold rounded-full hover:bg-black hover:text-white transition-all ease-in-out duration-300"
           >
             Get Started
