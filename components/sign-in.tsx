@@ -1,14 +1,15 @@
 import { signIn } from "@/auth";
 
-export default function SignIn() {
+const SignIn = (provider: string) => {
   return (
     <form
       action={async () => {
-        "use server";
-        await signIn("google");
+        await signIn(provider);
       }}
     >
       <button type="submit">Signin with Google</button>
     </form>
   );
-}
+};
+
+export default SignIn;
