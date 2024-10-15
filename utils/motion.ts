@@ -1,6 +1,6 @@
 export function slideInFromLeft(delay: number, duration: number) {
   return {
-    hidden: { x: -100, opacity: 0 },
+    hidden: { x: -25, opacity: 0 },
     visible: {
       x: 0,
       opacity: 1,
@@ -14,7 +14,7 @@ export function slideInFromLeft(delay: number, duration: number) {
 
 export function slideInFromRight(delay: number, duration: number) {
   return {
-    hidden: { x: 100, opacity: 0 },
+    hidden: { x: 25, opacity: 0 },
     visible: {
       x: 0,
       opacity: 1,
@@ -28,7 +28,7 @@ export function slideInFromRight(delay: number, duration: number) {
 
 export const slideInFromTop = (delay: number, duration: number) => {
   return {
-    hidden: { y: -100, opacity: 0 },
+    hidden: { y: -25, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
