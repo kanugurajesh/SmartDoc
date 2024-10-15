@@ -11,7 +11,7 @@ export default function SignOut() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="bg-black text-white hover:bg-gray-200 rounded-md hover:text-black p-3 flex items-center justify-center font-semibold cursor-pointer transition-all ease-in-out duration-300">
       <button type="submit">Sign Out</button>
     </form>
   );
