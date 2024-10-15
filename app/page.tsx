@@ -23,7 +23,7 @@ export default function Home() {
         <motion.div
           initial="hidden"
           animate="visible"
-          variants={slideInFromRight(0.5)}
+          variants={slideInFromRight(0.5, 0.5)}
           className="text-[40px] font-medium text-center z-10"
         >
           <span className="text-gray-100">Performance</span>
