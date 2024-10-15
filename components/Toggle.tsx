@@ -31,7 +31,7 @@ const Toggle = () => {
   return (
     <div
       onClick={changeTheme}
-      className={`w-16 h-9 bg-slate-200 flex rounded-full p-1 cursor-pointer items-center ${
+      className={`w-14 h-7 bg-slate-200 flex rounded-full p-1 cursor-pointer items-center ${
         theme === "dark" ? "justify-end" : "justify-start"
       }`}
     >
@@ -39,7 +39,7 @@ const Toggle = () => {
       <motion.div
         layout
         transition={spring}
-        className="w-7 h-7 bg-white rounded-full"
+        className="w-5 h-5 bg-white rounded-full"
       />
     </div>
   );

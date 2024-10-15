@@ -1,6 +1,5 @@
 "use client";
 
-// import { signIn } from "@/auth";
 import { signIn } from "next-auth/react";
 
 interface SignInProps {
@@ -8,7 +7,7 @@ interface SignInProps {
 }
 
 const SignIn = (provider: SignInProps) => {
-  const handleSignIn = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSignIn = async (event: React.FormEvent<HTMLFormElement>) : Promise<void> => {
     event.preventDefault();
     await signIn(provider.provider, {redirectTo: "/home"});
   };

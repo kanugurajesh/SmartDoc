@@ -1,14 +1,18 @@
-import { signOut } from "@/auth";
+"use client";
+
+import { signOut } from "next-auth/react";
 
 export default function SignOut() {
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ): Promise<void> => {
+    e.preventDefault();
+    await signOut({ redirectTo: "/" });
+  };
+
   return (
-    <form
-      action={async () => {
-        "use server";
-        await signOut();
-      }}
-    >
-      <button type="submit">SignOut with Google</button>
+    <form onSubmit={handleSubmit}>
+      <button type="submit">Sign Out</button>
     </form>
   );
 }
