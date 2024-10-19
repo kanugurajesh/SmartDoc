@@ -17,7 +17,7 @@ const NotFound = () => {
     }, 3000);
   }, []);
 
-  const { rive, RiveComponent } = useRive({
+  const { RiveComponent } = useRive({
     src: "/rive/car_404.riv",
     stateMachines: "State Machine 1",
     autoplay: true,
