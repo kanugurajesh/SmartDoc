@@ -46,7 +46,7 @@ export default function Home() {
             initial="hidden"
             animate="visible"
             variants={slideInFromRight(0.5, 0.5)}
-            onClick={() => router.push("/signin")}
+            onClick={() => router.push("/api/auth/signin")}
             className="px-6 py-3 bg-white text-black border-2 border-black font-semibold rounded-full hover:bg-black hover:text-white transition-all ease-in-out duration-300"
           >
             Get Started
