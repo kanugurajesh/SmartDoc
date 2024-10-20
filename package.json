@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@google/generative-ai": "^0.21.0",
+    "@pinecone-database/pinecone": "^3.0.3",
     "@rive-app/react-canvas": "^4.14.5",
     "framer-motion": "^12.0.0-alpha.0",
     "next": "14.2.15",

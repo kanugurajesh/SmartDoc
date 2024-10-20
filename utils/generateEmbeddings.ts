@@ -6,7 +6,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string);
 
-const generateEmedding = (data: string) => {
+const generateEmedding = async (data: string) => {
   const model = genAI.getGenerativeModel({ model: "text-embedding-004" });
 
   // Split the data into chunks
