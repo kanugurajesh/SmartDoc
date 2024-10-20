@@ -35,6 +35,9 @@ const Home = () => {
       } else {
         toast.error("File upload failed");
       }
+
+      // const data = await response.json();
+
     } catch (error) {
       console.log("Error occured", error);
       toast.error("Error occurred during upload");
@@ -50,7 +53,7 @@ const Home = () => {
       <div className="absolute inset-0 top-4 right-4 z-10">
         <Profile />
       </div>
-      <div className="z-30">
+      <div className="z-30 flex flex-col gap-4">
         <input
           type="file"
           name=""
