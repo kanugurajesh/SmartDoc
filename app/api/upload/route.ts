@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import { promises as fs } from "fs";
 import PDFParser from "pdf2json";
 import { auth } from "@/auth";
+import { storeEmbeddings } from "@/utils/storeEmbeddings";
 
 export async function POST(req: NextRequest) {
   const formData: FormData = await req.formData();
@@ -45,10 +46,9 @@ export async function POST(req: NextRequest) {
   // After the content has been extracted from the PDF, we can store the data in the vector database
 
   const session = await auth();
+  const namespace = session?.user?.email as string;
 
-  
-
-  console.log(session?.user?.email);
+  await storeEmbeddings(parsedText, namespace);
 
   return NextResponse.json({ parsedText, fileName });
 }

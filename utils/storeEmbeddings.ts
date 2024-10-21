@@ -1,3 +1,5 @@
+// The code in this file is used to store the embeddings in the vector database
+
 import { Pinecone } from "@pinecone-database/pinecone";
 import { generateEmedding } from "@/utils/generateEmbeddings";
 
@@ -7,6 +9,7 @@ const pc = new Pinecone({
   apiKey: process.env.PINECONE_API_KEY as string,
 });
 
+// The below function is used to check if the Index is already present
 const checkIndex = async (Index: string) => {
   try {
     await pc.describeIndex(Index);
@@ -17,9 +20,8 @@ const checkIndex = async (Index: string) => {
 };
 
 const storeEmbeddings = async (data: string, namespace: string) => {
-  // check if the index is already created
-  const indexes = await pc.listIndexes();
 
+  // If the index is not present then create the index
   if (!checkIndex(pineconeIndex)) {
     await pc.createIndex({
       name: pineconeIndex,
@@ -34,10 +36,12 @@ const storeEmbeddings = async (data: string, namespace: string) => {
     });
   }
 
+  // The below creates the embeddings with the help of generateEmbedding function
   const embeddings = await generateEmedding(data);
 
   const index = pc.index(pineconeIndex);
 
+  // uploading the embeddings to the namespace in the index
   await index.namespace(namespace).upsert([...embeddings]);
 };
 
