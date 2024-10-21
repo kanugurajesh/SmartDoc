@@ -51,13 +51,13 @@ const Profile = () => {
               <p className="text-sm mt-[-2px]">{session.user.email}</p>
             </div>
             <Link
-              href="/admin"
+              href="/home"
               className="py-2 flex items-center justify-center bg-gray-200 text-black rounded-md font-semibold hover:bg-black hover:text-white transition-all ease-in-out duration-300"
             >
               Upload
             </Link>
             <Link
-              href="/home"
+              href="/chat"
               className="py-2 flex items-center justify-center bg-gray-200 text-black rounded-md font-semibold hover:bg-black hover:text-white transition-all ease-in-out duration-300 my-2"
             >
               Chat

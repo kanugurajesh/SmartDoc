@@ -28,8 +28,6 @@ const generateEmedding = async (data: string) => {
       },
     });
   }
-
-  console.log("Generated Embeddings:", embeddings);
   return embeddings;
 };
 

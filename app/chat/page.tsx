@@ -18,6 +18,7 @@ import Toggle from "@/components/Toggle";
 import Profile from "@/components/profile";
 import queryText from "@/utils/queryText";
 import { useTheme } from "next-themes";
+import ReactMarkdown from "react-markdown";
 
 type Message = {
   id: number;
@@ -108,7 +109,7 @@ export default function Component() {
         <CardContent>
           <ScrollArea className="h-[400px] pr-4">
             {messages.map((message, index) => (
-              <div
+              <code
                 key={message.id}
                 className={`flex items-start mb-4 ${
                   message.sender === "user" ? "justify-end" : "justify-start"
@@ -128,7 +129,7 @@ export default function Component() {
                       : "bg-secondary text-secondary-foreground"
                   }`}
                 >
-                  {message.text}
+                  <ReactMarkdown>{message.text}</ReactMarkdown>
                 </div>
                 {message.sender === "user" && (
                   <Avatar className="ml-2">
@@ -136,7 +137,7 @@ export default function Component() {
                     <AvatarFallback>You</AvatarFallback>
                   </Avatar>
                 )}
-              </div>
+              </code>
             ))}
           </ScrollArea>
         </CardContent>

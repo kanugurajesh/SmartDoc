@@ -32,13 +32,13 @@ const queryEmbeddings = async (
     return [];
   }
 
-  if (queryResponse.matches[0]) {
-    if (queryResponse.matches[0].metadata) {
-      console.log("Query Results:", queryResponse.matches[0].metadata.text);
-    } else {
-      console.log("Metadata is undefined");
-    }
-  }
+  // if (queryResponse.matches[0]) {
+  //   if (queryResponse.matches[0].metadata) {
+  //     console.log("Query Results:", queryResponse.matches[0].metadata.text);
+  //   } else {
+  //     console.log("Metadata is undefined");
+  //   }
+  // }
 
   return queryResponse;
 };
