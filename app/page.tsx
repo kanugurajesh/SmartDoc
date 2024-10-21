@@ -25,7 +25,7 @@ export default function Home() {
           variants={slideInFromTop(0.5, 0.5)}
           className="text-[40px] font-medium text-center z-10 max-w-2xl flex flex-col gap-3"
         >
-          <span className="flex flex-col text-3xl tracking-wide leading-tight text-center font-semibold sm:text-6xl">
+          <span className="flex flex-col text-3xl tracking-wide leading-tight text-center font-semibold sm:text-6xl text-black">
             Transform Your PDF Into Knowledge
           </span>
           <p className="text-center text-lg leading-6 text-gray-600 dark:text-gray-200 font-semibold">
