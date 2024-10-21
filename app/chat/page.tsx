@@ -15,6 +15,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import Toggle from "@/components/Toggle";
+import Profile from "@/components/profile";
+import queryText from "@/utils/queryText";
 
 type Message = {
   id: number;
@@ -58,24 +60,41 @@ export default function Component() {
         sender: "user",
       };
       setMessages([...messages, newMsg]);
-      setNewMessage("");
 
-      // Simulate bot response
-      setTimeout(() => {
+      queryText(newMessage).then((response) => {
         const botResponse: Message = {
           id: messages.length + 2,
-          text: "Thank you for your message. How else can I assist you?",
+          text: response,
           sender: "bot",
         };
         setMessages((prevMessages) => [...prevMessages, botResponse]);
-      }, 1000);
+      });
+
+      setNewMessage("");
+
+      // Simulate bot response
+      // setTimeout(() => {
+      //   const botResponse: Message = {
+      //     id: messages.length + 2,
+      //     text: "Thank you for your message. How else can I assist you?",
+      //     sender: "bot",
+      //   };
+      //   setMessages((prevMessages) => [...prevMessages, botResponse]);
+      // }, 1000);
     }
   };
 
   return (
-    <main className="p-4 flex flex-col gap-8 h-screen">
-      <Toggle />
-      <Card className="w-full mx-auto h-full flex flex-col justify-between">
+    <main className="p-4 flex flex-col gap-12 min-h-screen h-screen">
+      <div>
+        <div className="absolute inset-0 top-4 left-4 z-20 w-fit">
+          <Toggle />
+        </div>
+        <div className="absolute inset-0 top-4 right-4 z-4z0">
+          <Profile />
+        </div>
+      </div>
+      <Card className="w-full mx-auto h-full flex flex-col justify-between z-30">
         <CardHeader>
           <CardTitle className="text-2xl tracking-wide">SmartDoc</CardTitle>
         </CardHeader>
