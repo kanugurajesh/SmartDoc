@@ -20,9 +20,11 @@ const checkIndex = async (Index: string) => {
 };
 
 const storeEmbeddings = async (data: string, namespace: string) => {
-
   // If the index is not present then create the index
-  if (!checkIndex(pineconeIndex)) {
+  const indexExists = await checkIndex(pineconeIndex);
+
+  // If the index is not present, create the index
+  if (!indexExists) {
     await pc.createIndex({
       name: pineconeIndex,
       dimension: 768,
@@ -38,6 +40,8 @@ const storeEmbeddings = async (data: string, namespace: string) => {
 
   // The below creates the embeddings with the help of generateEmbedding function
   const embeddings = await generateEmedding(data);
+
+  console.log("Adding embeddings" + embeddings);
 
   const index = pc.index(pineconeIndex);
 
