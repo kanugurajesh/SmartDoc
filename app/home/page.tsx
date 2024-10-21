@@ -2,13 +2,19 @@
 
 import Toggle from "@/components/Toggle";
 import Profile from "@/components/profile";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { useTheme } from "next-themes";
+import { deleteData } from "@/utils/deleteData";
 
 const Home = () => {
   const [file, setFile] = useState<File | null>(null);
   const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false); // To track when the component is mounted on the client side
+
+  useEffect(() => {
+    setMounted(true); // Set mounted to true once the component is rendered on the client
+  }, []);
 
   const fileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -21,10 +27,10 @@ const Home = () => {
   };
 
   const handleUpload = async () => {
-    if (!file) return toast.error("file not found!");
+    if (!file) return toast.error("File not found!");
 
     const formData = new FormData();
-    formData.append("file", file); // Append the selected file to FormData
+    formData.append("file", file);
 
     try {
       const response = await fetch("/api/upload", {
@@ -37,13 +43,15 @@ const Home = () => {
       } else {
         toast.error("File upload failed");
       }
-
-      // const data = await response.json();
     } catch (error) {
-      console.log("Error occured", error);
+      console.log("Error occurred", error);
       toast.error("Error occurred during upload");
     }
   };
+
+  if (!mounted) {
+    return null; // Prevent rendering until the theme is mounted
+  }
 
   return (
     <main className="flex flex-col items-center justify-center relative h-screen">
@@ -54,7 +62,7 @@ const Home = () => {
       <div className="absolute inset-0 top-4 right-4 z-10">
         <Profile />
       </div>
-      {theme == "light" ? (
+      {theme === "light" ? (
         <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]">
           <div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_800px_at_100%_200px,#d5c5ff,transparent)]"></div>
         </div>
@@ -84,6 +92,9 @@ const Home = () => {
               Submit File
             </button>
           )}
+          <button className="bg-red-600 text-white p-2 rounded-md font-semibold hover:bg-white hover:text-red-600 transition-all ease-in-out duration-300 border-2 border-red-600" onClick={() => deleteData()}>
+            Delete Data
+          </button>
         </div>
       </div>
     </main>

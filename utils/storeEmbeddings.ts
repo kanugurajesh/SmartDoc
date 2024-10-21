@@ -3,7 +3,7 @@
 import { Pinecone } from "@pinecone-database/pinecone";
 import { generateEmedding } from "@/utils/generateEmbeddings";
 
-const pineconeIndex = process.env.Pinecone_Index as string;
+const pineconeIndex = process.env.PINECONE_INDEX as string;
 
 const pc = new Pinecone({
   apiKey: process.env.PINECONE_API_KEY as string,
