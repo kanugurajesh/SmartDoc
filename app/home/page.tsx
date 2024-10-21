@@ -63,7 +63,7 @@ const Home = () => {
         />
         <div className="flex gap-2">
           <button
-            className="bg-black text-white p-2 rounded-md font-semibold hover:bg-white hover:text-black transition-all ease-in-out duration-300 border-2 border-black"
+            className="bg-black text-white p-2 rounded-md font-semibold hover:bg-white hover:text-black transition-all ease-in-out duration-300 border-2 border-black dark:border-white"
             onClick={fileClick}
           >
             Upload File

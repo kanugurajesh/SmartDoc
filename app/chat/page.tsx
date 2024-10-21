@@ -88,7 +88,7 @@ export default function Component() {
         <div className="absolute inset-0 top-4 left-4 z-30 w-fit">
           <Toggle />
         </div>
-        <div className="absolute inset-0 top-4 right-4 z-10">
+        <div className="absolute inset-0 top-4 right-4">
           <Profile />
         </div>
       </div>
