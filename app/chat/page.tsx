@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Send, Upload } from "lucide-react";
+import { useEffect, useState, useRef } from "react";
+import { Send } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { getSession } from "next-auth/react";
@@ -26,16 +26,20 @@ type Message = {
 
 export default function Component() {
   const [userImage, setUserImage] = useState<string>("");
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const fetchSession = async () => {
       const session = await getSession();
-      // Do something with the session
       setUserImage(session?.user?.image as string);
     };
 
     fetchSession();
   }, []);
+
+  const scrollToBottom = () => {
+    sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+  };
 
   const [messages, setMessages] = useState<Message[]>([
     { id: 1, text: "Hello! How can I help you today?", sender: "bot" },
@@ -51,6 +55,10 @@ export default function Component() {
     },
   ]);
   const [newMessage, setNewMessage] = useState("");
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   const handleSendMessage = () => {
     if (newMessage.trim() !== "") {
@@ -71,41 +79,32 @@ export default function Component() {
       });
 
       setNewMessage("");
-
-      // Simulate bot response
-      // setTimeout(() => {
-      //   const botResponse: Message = {
-      //     id: messages.length + 2,
-      //     text: "Thank you for your message. How else can I assist you?",
-      //     sender: "bot",
-      //   };
-      //   setMessages((prevMessages) => [...prevMessages, botResponse]);
-      // }, 1000);
     }
   };
 
   return (
-    <main className="p-4 flex flex-col gap-12 min-h-screen h-screen">
+    <main className="p-4 flex flex-col gap-12 min-h-screen h-screen relative">
       <div>
-        <div className="absolute inset-0 top-4 left-4 z-20 w-fit">
+        <div className="absolute inset-0 top-4 left-4 z-30 w-fit">
           <Toggle />
         </div>
-        <div className="absolute inset-0 top-4 right-4 z-4z0">
+        <div className="absolute inset-0 top-4 right-4 z-10">
           <Profile />
         </div>
       </div>
-      <Card className="w-full mx-auto h-full flex flex-col justify-between z-30">
+      <Card className="w-full mx-auto h-full flex flex-col justify-between z-40">
         <CardHeader>
           <CardTitle className="text-2xl tracking-wide">SmartDoc</CardTitle>
         </CardHeader>
         <CardContent>
           <ScrollArea className="h-[400px] pr-4">
-            {messages.map((message) => (
+            {messages.map((message, index) => (
               <div
                 key={message.id}
                 className={`flex items-start mb-4 ${
                   message.sender === "user" ? "justify-end" : "justify-start"
                 }`}
+                ref={index === messages.length - 1 ? sectionRef : null} // Set ref on the last message
               >
                 {message.sender === "bot" && (
                   <Avatar className="mr-2">
@@ -145,10 +144,6 @@ export default function Component() {
               value={newMessage}
               onChange={(e) => setNewMessage(e.target.value)}
             />
-            <Button type="submit" size="icon">
-              <Upload className="h-4 w-4" />
-              <span className="sr-only">Send</span>
-            </Button>
             <Button type="submit" size="icon">
               <Send className="h-4 w-4" />
               <span className="sr-only">Send</span>
