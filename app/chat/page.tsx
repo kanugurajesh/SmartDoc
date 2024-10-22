@@ -19,6 +19,7 @@ import Profile from "@/components/profile";
 import queryText from "@/utils/queryText";
 import { useTheme } from "next-themes";
 import ReactMarkdown from "react-markdown";
+import toast from "react-hot-toast";
 
 type Message = {
   id: number;
@@ -72,14 +73,22 @@ export default function Component() {
       };
       setMessages([...messages, newMsg]);
 
-      queryText(newMessage).then((response) => {
+      // Adding loading state
+
+      const handleBotResponse = async () => {
+        toast.dismiss();
+        toast.loading("Thinking...");
+        const response = await queryText(newMessage);
         const botResponse: Message = {
           id: messages.length + 2,
           text: response,
           sender: "bot",
         };
         setMessages((prevMessages) => [...prevMessages, botResponse]);
-      });
+        toast.dismiss();
+      };
+
+      handleBotResponse();
 
       setNewMessage("");
     }

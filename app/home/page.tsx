@@ -49,6 +49,15 @@ const Home = () => {
     }
   };
 
+  const handleDelete = async () => {
+    const response = await deleteData();
+    if (response.success) {
+      toast.success("Data deleted successfully");
+    } else {
+      toast.error("Error occurred while deleting data");
+    }
+  };
+
   if (!mounted) {
     return null; // Prevent rendering until the theme is mounted
   }
@@ -92,7 +101,10 @@ const Home = () => {
               Submit File
             </button>
           )}
-          <button className="bg-red-600 text-white p-2 rounded-md font-semibold hover:bg-white hover:text-red-600 transition-all ease-in-out duration-300 border-2 border-red-600" onClick={() => deleteData()}>
+          <button
+            className="bg-red-600 text-white p-2 rounded-md font-semibold hover:bg-white hover:text-red-600 transition-all ease-in-out duration-300 border-2 border-red-600"
+            onClick={() => handleDelete()}
+          >
             Delete Data
           </button>
         </div>

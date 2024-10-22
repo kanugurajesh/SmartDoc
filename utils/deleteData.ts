@@ -7,9 +7,15 @@ const pc = new Pinecone({ apiKey: process.env.PINECONE_API_KEY as string });
 const index = pc.index(process.env.PINECONE_INDEX as string);
 
 const deleteData = async () => {
-  const data = await getSessionData();
+  try {
+    const data = await getSessionData();
 
-  await index.namespace(data?.user?.email as string).deleteAll();
+    await index.namespace(data?.user?.email as string).deleteAll();
+
+    return { success: true };
+  } catch (error) {
+    return { success: false, error };
+  }
 };
 
 export { deleteData };
