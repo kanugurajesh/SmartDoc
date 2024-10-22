@@ -29,6 +29,8 @@ const Home = () => {
   const handleUpload = async () => {
     if (!file) return toast.error("File not found!");
 
+    toast.dismiss();
+    toast.loading("Uploading file...");
     const formData = new FormData();
     formData.append("file", file);
 
@@ -38,6 +40,7 @@ const Home = () => {
         body: formData,
       });
 
+      toast.dismiss();
       if (response.ok) {
         toast.success("File uploaded successfully");
       } else {
