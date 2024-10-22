@@ -53,7 +53,10 @@ const Home = () => {
   };
 
   const handleDelete = async () => {
+    toast.dismiss();
+    toast.loading("Deleting data...");
     const response = await deleteData();
+    toast.dismiss();
     if (response.success) {
       toast.success("Data deleted successfully");
     } else {
