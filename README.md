@@ -70,6 +70,20 @@ I’ve always wanted to build a **RAG system** on the web, but most resources re
    ```bash
    npm run dev
    ```
+
+## Images
+
+![Screenshot 2024-10-23 155433](https://github.com/user-attachments/assets/e7ce9edc-71df-4330-8156-0cfa948d7f10)
+![Screenshot 2024-10-23 155441](https://github.com/user-attachments/assets/4ed4573f-3390-4a27-8373-71976d90da9f)
+![Screenshot 2024-10-23 155450](https://github.com/user-attachments/assets/8e3e1eac-d839-44a3-8525-5af488eb9b32)
+![Screenshot 2024-10-23 155524](https://github.com/user-attachments/assets/5529fc02-1d4d-45bb-ad3a-5b77503df911)
+![Screenshot 2024-10-23 155531](https://github.com/user-attachments/assets/e54c8710-ec85-410b-add2-affdd8126da8)
+![Screenshot 2024-10-23 155538](https://github.com/user-attachments/assets/c711c469-1ee5-409a-bb24-249bc3974830)
+![Screenshot 2024-10-23 155556](https://github.com/user-attachments/assets/f83921e8-72e2-431a-85dd-b25b1253b2f9)
+![Screenshot 2024-10-23 155611](https://github.com/user-attachments/assets/7cbd1b40-6f0e-4704-9c16-1f7c6d648993)
+![Screenshot 2024-10-23 155638](https://github.com/user-attachments/assets/15994089-f66b-4fa7-a0b5-a9207016e3d5)
+![Screenshot 2024-10-23 155649](https://github.com/user-attachments/assets/f23b40f8-3dbf-467d-8c6c-cfd8462775c6)
+
    
 ## 🚀 Tech Stack
 
