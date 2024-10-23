@@ -15,3 +15,7 @@ The first open source RAG build with Gemini, Pinecone and Next.js with complete 
 7. 🌍 **Google** - Authentication and other services for apps.
 8. 🧠 **Pinecone Vector Database** - Vector database for machine learning models.
 9. 🤖 **Gemini Model & Embeddings** - Advanced AI for embeddings and language understanding.
+
+## ▶️ Demo
+
+[![SnapText](https://img.youtube.com/vi/9d-zrrcsEew/0.jpg)](https://www.youtube.com/watch?v=9d-zrrcsEew)
