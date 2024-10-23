@@ -1,5 +1,7 @@
 # SmartDoc
 
+The first open source RAG build with Gemini, Pinecone and Next.js with complete Authentication.
+
 ![Screenshot 2024-10-23 101438](https://github.com/user-attachments/assets/9afb2954-aa74-40cb-a970-c4b0fbd3e18a)
 
 ## 🚀 Tech Stack
