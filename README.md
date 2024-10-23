@@ -1,3 +1,3 @@
 # SmartDoc
 
-![Screenshot 2024-10-21 192557](https://github.com/user-attachments/assets/3e1d0f0b-036f-4706-884d-d142fa09d72f)
+![Screenshot 2024-10-23 101438](https://github.com/user-attachments/assets/9afb2954-aa74-40cb-a970-c4b0fbd3e18a)
